@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8">
+  <title>اطلاعات شب یلدا</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      background: #fff3e0;
+      text-align: center;
+      margin: 0;
+      padding: 50px 20px;
+      direction: rtl;
+    }
+    .box {
+      background: #ffe0b2;
+      padding: 20px;
+      border-radius: 12px;
+      display: inline-block;
+      max-width: 800px;
+      line-height: 1.9;
+      text-align: justify;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    .section {
+      max-width: 800px;
+      margin: 24px auto 0;
+      text-align: center;
+    }
+    .caption {
+      font-weight: bold;
+      color: #8a4b00;
+      margin-bottom: 12px;
+    }
+    .btn-orange {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 10px;
+      background: #ff9800; /* نارنجی */
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(255,152,0,0.35);
+    }
+    .btn-orange:hover { background: #e68900; }
+
+    /* پلیر با انیمیشن */
+    audio, .source-note {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1.5s ease;
+      pointer-events: none;
+    }
+    audio.show, .source-note.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    audio {
+      width: 100%;
+      max-width: 800px;
+      margin: 16px auto 0;
+      display: block;
+    }
+    .source-note {
+      font-size: 13px;
+      color: #555;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌙 اطلاعات شب یلدا</h1>
+
+  <div class="box">
+    <p>
+      شب یلدا یا شب چله، آخرین شب پاییز و طولانی‌ترین شب سال در نیم‌کره شمالی است.
+      این شب از غروب ۳۰ آذر تا طلوع ۱ دی ادامه دارد و از دیرباز در ایران باستان جشن گرفته می‌شود.
+    </p>
+    <p>
+      واژه «یلدا» ریشه‌ای سریانی دارد و به معنای «زایش» و «تولد» است.
+      در فرهنگ ایرانی، این شب نماد تولد خورشید و آغاز روزهای روشن‌تر به شمار می‌آید.
+      آداب و رسوم شب یلدا شامل گردهمایی خانواده‌ها، قصه‌گویی، شاهنامه‌خوانی، فال حافظ،
+      و خوردن خوراکی‌های نمادین مانند هندوانه و انار است.
+    </p>
+    <p>
+      شب یلدا فرصتی است برای گرامیداشت سنت‌های ایرانی، تقویت پیوندهای خانوادگی
+      و یادآوری ارزش‌های فرهنگی کهن؛ شبی که برای ایرانیان در سراسر جهان خاطره‌انگیز است.
+    </p>
+  </div>
+
+  <div class="section">
+    <div class="caption">غزل شمارهٔ ۱  به خوانش فریدون فرح‌اندوز</div>
+    <button class="btn-orange" onclick="showPlayer()">پخش صدا</button>
+
+    <!-- پلیر صوتی -->
+    <audio id="player" controls src="2130-ff.mp3"></audio>
+    <!-- یادداشت منبع -->
+    <div id="note" class="source-note">این صدا از سایت گنجور برداشته شده</div>
+  </div>
+
+  <script>
+    function showPlayer() {
+      const player = document.getElementById('player');
+      const note = document.getElementById('note');
+      player.classList.add('show');
+      note.classList.add('show');
+      player.play().catch(() => {
+        // اگر مرورگر اجازه پخش خودکار نداد، فقط ظاهر بشه
+      });
+    }
+  </script>
+</body>
+</html>

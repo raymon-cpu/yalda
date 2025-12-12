@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8">
+  <title>بیشتر</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      background: #eaf4ff;
+      text-align: center;
+      margin: 0;
+      padding: 50px 20px;
+      direction: rtl;
+    }
+    .btn-blue {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 10px;
+      background: #007bff; /* آبی */
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(0,123,255,0.35);
+      margin-bottom: 20px;
+    }
+    .btn-blue:hover { background: #0056b3; }
+
+    /* متن و پلیرها با انیمیشن */
+    .caption, audio {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1.5s ease; /* زمان انیمیشن 1.5 ثانیه */
+      pointer-events: none;
+    }
+    .caption.show, audio.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .caption {
+      font-weight: bold;
+      color: #004080;
+      margin: 20px 0 10px;
+    }
+    audio {
+      width: 100%;
+      max-width: 800px;
+      margin: 16px auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔊 بخش بیشتر</h1>
+  <p>برای دیدن پلیرها روی دکمه زیر بزن:</p>
+
+  <!-- دکمه آبی -->
+  <button class="btn-blue" onclick="showPlayers()">پخش صدا</button>
+
+  <!-- پلیر اول -->
+  <div id="caption1" class="caption">۱</div>
+  <audio id="player1" controls src="audio1.mp3"></audio>
+
+  <!-- پلیر دوم -->
+  <div id="caption2" class="caption">۲</div>
+  <audio id="player2" controls src="audio2.mp3"></audio>
+
+  <script>
+    function showPlayers() {
+      document.getElementById('caption1').classList.add('show');
+      document.getElementById('player1').classList.add('show');
+      document.getElementById('caption2').classList.add('show');
+      document.getElementById('player2').classList.add('show');
+      // توجه: پلیرها فقط ظاهر می‌شن، خودکار پخش نمی‌شن
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8">
+  <title>پروژه شب یلدا</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      direction: rtl;
+    }
+
+    /* هدر تصویری */
+    .hero {
+      background-image: url('yalda-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 32px;
+      font-weight: bold;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .container {
+      padding: 30px;
+    }
+
+    /* دکمه‌ها */
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+
+    .btn, .btn-info {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn {
+      background: #00a651;
+      color: white;
+    }
+    .btn:hover { background: #008f44; }
+
+    .btn-info {
+      background: #ff9800;
+      color: white;
+    }
+    .btn-info:hover { background: #e68900; }
+
+    /* نوشته بالای فلش‌های پایین */
+    .scroll-text {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    /* فلش‌های کوچک آبی رو به پایین */
+    .scroll-down {
+      margin-top: 20px;
+      font-size: 24px;
+      color: #2196f3;
+      text-align: center;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* بخش متن‌های یلدا */
+    .info-section {
+      margin-top: 340px;
+      padding: 40px;
+      background: #fff;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+
+      opacity: 0;
+      transform: translateY(80px);
+      transition: all 2s ease;
+    }
+    .info-section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .box {
+      position: relative;
+      text-align: justify;
+      line-height: 1.9;
+    }
+
+    .image {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .image img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .text {
+      padding-right: 220px;
+    }
+    .text h2 {
+      color: #8a0303;
+      margin-bottom: 20px;
+      text-align: right;
+    }
+
+    /* فلش‌های رو به بالا پایین صفحه */
+    .scroll-up {
+      margin-top: 100px;
+      padding: 20px;
+      font-size: 24px;
+      color: #2196f3;
+      text-align: center;
+      opacity: 0.7;
+      animation: bounceUp 1.5s infinite;
+    }
+
+    @keyframes bounceUp {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- هدر تصویری -->
+  <div class="hero">
+    🌙 پروژه شب یلدا
+  </div>
+
+  <!-- دکمه‌ها -->
+  <div class="container">
+    <p>برای دیدن جزئیات بیشتر یا اطلاعات روی دکمه‌ها بزن:</p>
+    <div class="btn-row">
+      <a href="info.html" class="btn-info">اطلاعات</a>
+      <a href="more.html" class="btn">بیشتر</a>
+    </div>
+
+    <!-- نوشته بالای فلش‌ها -->
+    <div class="scroll-text">به پایین بروید</div>
+
+    <!-- فلش‌های کوچک آبی رو به پایین -->
+    <div class="scroll-down">
+      ⬇️⬇️
+    </div>
+  </div>
+
+  <!-- بخش متن‌های یلدا -->
+  <div class="info-section" id="info">
+    <div class="box">
+      <div class="image">
+        <img src="anar.jpg" alt="تصویر شب یلدا">
+      </div>
+      <div class="text">
+        <h2>شب یلدا؛ جشن باستانی ایرانیان</h2>
+        <p>یلدا، آخرین شب پاییز و طولانی‌ترین شب سال، از هزاران سال پیش در فرهنگ ایرانیان جایگاه ویژه‌ای داشته است.</p>
+        <p>این شب نماد تولد خورشید و آغاز روزهای روشن‌تر است؛ زمانی که مردم با شادی و امید به استقبال زمستان می‌روند.</p>
+        <p>سفره‌ی یلدا با میوه‌هایی چون هندوانه و انار چیده می‌شود؛ هرکدام نمادی از سلامتی، برکت و شادی.</p>
+        <p>قصه‌گویی بزرگ‌ترها، شاهنامه‌خوانی و فال حافظ از رسوم محبوب این شب هستند که نسل‌ها را به هم پیوند می‌دهند.</p>
+        <p>یلدا فرصتی برای گردهمایی خانواده‌ها و یادآوری ارزش‌های فرهنگی و اجتماعی ایرانیان است.</p>
+        <p>این جشن همچنان یکی از خاطره‌انگیزترین شب‌های سال برای ایرانیان در سراسر جهان باقی مانده است.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- فلش‌های رو به بالا پایین صفحه -->
+  <div class="scroll-up">
+    ⬆️⬆️
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const info = document.getElementById('info');
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            info.classList.add('show');
+            observer.unobserve(info);
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(info);
+    });
+  </script>
+
+</body>
+</html>
