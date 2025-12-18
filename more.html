@@ -7,34 +7,58 @@
   <style>
     body {
       font-family: Tahoma, sans-serif;
-      background: #eaf4ff;
-      text-align: center;
+      background: #0d1b2a;
+      color: #fff;
       margin: 0;
       padding: 50px 20px;
+      text-align: center;
       direction: rtl;
+      overflow-x: hidden;
     }
+
+    /* دکمه بازگشت بالا سمت چپ */
+    .back-to-top {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #2196f3;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+    .back-to-top:hover { background: #1976d2; transform: scale(1.05); }
+
+    h1 { color: #ffcc00; margin-top: 0; }
+
+    /* دکمه آبی نمایش پلیرها */
     .btn-blue {
       display: inline-block;
       padding: 12px 22px;
       border-radius: 10px;
-      background: #007bff; /* آبی */
+      background: #007bff;
       color: #fff;
       font-size: 16px;
       font-weight: bold;
-      text-decoration: none;
       border: none;
       cursor: pointer;
-      transition: 0.25s;
+      transition: transform 0.25s ease, background 0.25s ease;
       box-shadow: 0 4px 12px rgba(0,123,255,0.35);
       margin-bottom: 20px;
     }
-    .btn-blue:hover { background: #0056b3; }
+    .btn-blue:hover { background: #0056b3; transform: scale(1.1); }
 
-    /* متن و پلیرها با انیمیشن */
+    /* کپشن و پلیرها با انیمیشن ورود */
     .caption, audio {
       opacity: 0;
       transform: translateY(20px);
-      transition: all 1.5s ease; /* زمان انیمیشن 1.5 ثانیه */
+      transition: all 1.5s ease;
       pointer-events: none;
     }
     .caption.show, audio.show {
@@ -42,10 +66,9 @@
       transform: translateY(0);
       pointer-events: auto;
     }
-
     .caption {
       font-weight: bold;
-      color: #004080;
+      color: #ffcc00;
       margin: 20px 0 10px;
     }
     audio {
@@ -54,14 +77,124 @@
       margin: 16px auto;
       display: block;
     }
+
+    /* سرگرمی کوتاه (بخش معما) */
+    .game {
+      margin-top: 40px;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .game .btn {
+      margin-top: 10px;
+      background: #ff9800;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+      display: inline-block;
+    }
+    .game .btn:hover { background: #e68900; transform: scale(1.05); }
+    #riddle { margin-top: 10px; font-weight: bold; color: #ffcc00; }
+    #answer { margin-top: 10px; font-style: italic; color: #ffcc00; }
+
+    /* شمع‌های واقعی‌تر */
+    .candles {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    .candle {
+      width: 26px;
+      height: 90px;
+      background: linear-gradient(to bottom, #fff 0%, #f5deb3 60%, #e3c58f 100%);
+      border-radius: 8px;
+      position: relative;
+      box-shadow: 0 0 20px rgba(255,240,180,0.25);
+    }
+    .candle:before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 6px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 3px;
+      filter: blur(1px);
+    }
+    .wick {
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 10px;
+      background: #333;
+      border-radius: 2px;
+    }
+    .flame {
+      position: absolute;
+      top: -26px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 28px;
+      background: radial-gradient(circle at 50% 20%, #ffff66 0%, #ffd54f 55%, #ff8f00 85%, rgba(255,143,0,0.0) 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 28px rgba(255,200,0,0.75), 0 0 10px rgba(255,150,0,0.6) inset;
+      animation: flicker 0.25s infinite alternate ease-in-out;
+    }
+    @keyframes flicker {
+      from { transform: translateX(-50%) scale(1); opacity: 0.95; filter: hue-rotate(0deg) brightness(1); }
+      to   { transform: translateX(-50%) scale(1.1); opacity: 0.7; filter: hue-rotate(8deg) brightness(1.1); }
+    }
+    .glow {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,220,120,0.25) 0%, rgba(255,220,120,0.08) 50%, rgba(255,220,120,0) 70%);
+      filter: blur(8px);
+      pointer-events: none;
+    }
+
+    /* افکت برف */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #fff;
+      font-size: 14px;
+      animation: fall linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0.9; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- دکمه بازگشت -->
+  <a href="index.html" class="back-to-top">⬅️ بازگشت</a>
+
   <h1>🔊 بخش بیشتر</h1>
   <p>برای دیدن پلیرها روی دکمه زیر بزن:</p>
 
   <!-- دکمه آبی -->
-  <button class="btn-blue" onclick="showPlayers()">پخش صدا</button>
+  <button id="showBtn" class="btn-blue">پخش صدا</button>
 
   <!-- پلیر اول -->
   <div id="caption1" class="caption">۱</div>
@@ -71,14 +204,134 @@
   <div id="caption2" class="caption">۲</div>
   <audio id="player2" controls src="audio2.mp3"></audio>
 
+  <!-- سرگرمی کوتاه -->
+  <div class="game">
+    <p>🎲 معما:</p>
+    <div id="riddle"></div>
+    <button id="answerBtn" class="btn">نمایش جواب</button>
+    <div id="answer"></div>
+    <button id="newBtn" class="btn">معمای جدید</button>
+  </div>
+
+  <!-- شمع‌ها -->
+  <div class="candles">
+    <div class="candle">
+      <div class="glow"></div>
+      <div class="wick"></div>
+      <div class="flame"></div>
+    </div>
+    <div class="candle">
+      <div class="glow"></div>
+      <div class="wick"></div>
+      <div class="flame"></div>
+    </div>
+    <div class="candle">
+      <div class="glow"></div>
+      <div class="wick"></div>
+      <div class="flame"></div>
+    </div>
+  </div>
+
+  <!-- اسکریپت: دکمه‌ها، معماها، برف -->
   <script>
+    // نمایش پلیرها با انیمیشن
     function showPlayers() {
       document.getElementById('caption1').classList.add('show');
       document.getElementById('player1').classList.add('show');
       document.getElementById('caption2').classList.add('show');
       document.getElementById('player2').classList.add('show');
-      // توجه: پلیرها فقط ظاهر می‌شن، خودکار پخش نمی‌شن
     }
+
+    // معماها (20 مورد)
+    const riddles = [
+  {q:"🍉 میوه‌ای که در شب یلدا نماد طول عمر است؟", a:"هندوانه"},
+  {q:"🔴 دانه‌های سرخ و کوچک که نماد شادی‌اند؟", a:"انار"},
+  {q:"📖 کتابی که در شب یلدا برای فال استفاده می‌شود؟", a:"دیوان حافظ"},
+  {q:"🌞 شب یلدا پایان کدام فصل است؟", a:"پاییز"},
+  {q:"🕯️ چه چیزی در شب یلدا روشن می‌شود تا گرما ببخشد؟", a:"شمع"},
+  {q:"🐦 پرنده‌ای که نامش با «ی» شروع می‌شود و آواز خوش دارد؟", a:"یاکریم"},
+  {q:"🥜 خوراکی خشک و پرانرژی که در یلدا خورده می‌شود؟", a:"آجیل"},
+  {q:"🌙 طولانی‌ترین شب سال چه نام دارد؟", a:"یلدا"},
+  {q:"🧊 چیزی که در زمستان زیاد دیده می‌شود و سفید است؟", a:"برف"},
+  {q:"🏠 جایی که خانواده در یلدا دور هم جمع می‌شوند؟", a:"خانه"},
+  {q:"📚 کتابی که فردوسی نوشته و در یلدا خوانده می‌شود؟", a:"شاهنامه"},
+  {q:"🔔 چیزی که خبر آمدن سال نو را می‌دهد؟", a:"زنگ"},
+  {q:"🐑 حیوانی که پشمش برای گرما استفاده می‌شود؟", a:"گوسفند"},
+  {q:"🌳 درختی که میوه‌اش خشک می‌شود و در یلدا خورده می‌شود؟", a:"انجیر"},
+  {q:"🐠 حیوانی که در آب زندگی می‌کند و نماد برکت است؟", a:"ماهی"},
+  {q:"🧣 چیزی که در زمستان دور گردن می‌پیچند؟", a:"شال"},
+  {q:"🥔 خوراکی زمینی که در زمستان زیاد پخته می‌شود؟", a:"سیب‌زمینی"},
+  {q:"🥭 میوه‌ای زرد و شیرین که در تابستان است؟", a:"انبه"},
+  {q:"🧩 چیزی که باید حل شود تا جوابش پیدا شود؟", a:"معما"},
+  {q:"🎁 چیزی که در شب یلدا به هم داده می‌شود؟", a:"هدیه"},
+
+  // 20 معمای جدید
+  {q:"🌌 شب یلدا چه ویژگی‌ای دارد؟", a:"طولانی‌ترین شب سال"},
+  {q:"🔥 چه چیزی در کرسی قدیمی گرما می‌دهد؟", a:"زغال"},
+  {q:"🍎 میوه‌ای قرمز که در یلدا خورده می‌شود؟", a:"سیب"},
+  {q:"🌰 خوراکی قهوه‌ای که در یلدا بو داده می‌شود؟", a:"شاه‌بلوط"},
+  {q:"📜 کتابی که برای فال غیر از حافظ استفاده می‌شود؟", a:"مثنوی"},
+  {q:"🧤 چیزی که در زمستان دست‌ها را گرم می‌کند؟", a:"دستکش"},
+  {q:"🌟 نماد امید در شب‌های طولانی چیست؟", a:"ستاره"},
+  {q:"🍊 میوه‌ای نارنجی و زمستانی؟", a:"پرتقال"},
+  {q:"🥥 میوه‌ای سفید داخل پوسته سخت؟", a:"نارگیل"},
+  {q:"🧊 چیزی که در زمستان روی شیشه‌ها می‌نشیند؟", a:"یخ"},
+  {q:"🎶 چه چیزی در یلدا خوانده می‌شود؟", a:"شعر حافظ"},
+  {q:"🧦 چیزی که پاها را گرم می‌کند؟", a:"جوراب"},
+  {q:"🌿 گیاهی که دم‌نوش آن در زمستان خورده می‌شود؟", a:"نعناع"},
+  {q:"🍪 خوراکی شیرین که در یلدا پخته می‌شود؟", a:"کلوچه"},
+  {q:"🕰️ وسیله‌ای که زمان را نشان می‌دهد؟", a:"ساعت"},
+  {q:"🌍 در کدام نیمکره شب یلدا رخ می‌دهد؟", a:"شمالی"},
+  {q:"🍵 نوشیدنی گرم زمستانی؟", a:"چای"},
+  {q:"🧊 آب یخ‌زده چه نام دارد؟", a:"یخ"},
+  {q:"🎇 چیزی که در جشن‌ها روشن می‌شود؟", a:"اتش یا شمع"},
+  {q:"🌄 بعد از شب یلدا چه می‌آید؟", a:"طلوع خورشید"}
+];
+
+    let currentRiddle = null;
+
+    function newRiddle() {
+      const idx = Math.floor(Math.random() * riddles.length);
+      currentRiddle = riddles[idx];
+      document.getElementById('riddle').textContent = currentRiddle.q;
+      document.getElementById('answer').textContent = "";
+    }
+
+    function showAnswer() {
+      if (currentRiddle) {
+        document.getElementById('answer').textContent = "✅ " + currentRiddle.a;
+      }
+    }
+
+    // افکت برف
+    function createSnowflake() {
+      const snowflake = document.createElement('span');
+      snowflake.className = 'snowflake';
+      snowflake.textContent = '❄';
+      const size = 12 + Math.random() * 10;
+      snowflake.style.fontSize = size + 'px';
+      snowflake.style.left = Math.random() * window.innerWidth + 'px';
+      snowflake.style.animationDuration = (6 + Math.random() * 6) + 's';
+      document.body.appendChild(snowflake);
+      setTimeout(() => snowflake.remove(), 12000);
+    }
+
+    // اتصال دکمه‌ها و شروع اولیه
+    document.addEventListener('DOMContentLoaded', () => {
+      // دکمه نمایش پلیرها
+      const showBtn = document.getElementById('showBtn');
+      showBtn.addEventListener('click', showPlayers);
+
+      // معما اولیه و دکمه‌ها
+      newRiddle();
+      document.getElementById('answerBtn').addEventListener('click', showAnswer);
+      document.getElementById('newBtn').addEventListener('click', newRiddle);
+
+      // شروع برف
+      setInterval(createSnowflake, 300);
+      // چند دانه ابتدایی برای شروع
+      for (let i = 0; i < 10; i++) createSnowflake();
+    });
   </script>
 </body>
 </html>
